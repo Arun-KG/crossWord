@@ -1,7 +1,13 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #00b7ff;
+  background: url("./../images/repBg.jpg");
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 a {
