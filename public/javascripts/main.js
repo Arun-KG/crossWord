@@ -117,6 +117,13 @@ $(document).on("click", "#chkBtn", function() {
   if (key !== "") {
     console.log(key);
     console.log(matrix);
+
+    let cw = new CrossWord({
+      matrix: matrix,
+      key: key
+    });
+
+    console.log(cw.solvedMatrix());
   } else {
     alert("You must enter the content that you want to find from the matrix");
   }
