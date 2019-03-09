@@ -123,6 +123,15 @@ $(document).on("click", "#chkBtn", function() {
       key: key
     });
 
+    let result = cw.solvedMatrix();
+
+    if (result.atLeastOne) {
+      setResultPosition(result.positionMatrix);
+      alert("Match found");
+    } else {
+      alert("no match found");
+    }
+
     console.log(cw.solvedMatrix());
   } else {
     alert("You must enter the content that you want to find from the matrix");
