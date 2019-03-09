@@ -16,6 +16,8 @@ $("#firstSBMT").click(function() {
       alert("Dimensions are too small!");
     } else {
       $("#content").html("");
+      $("#dims").hide();
+      $("#reset-btn").addClass("visible");
       generateTables();
     }
   } else {
@@ -28,7 +30,7 @@ function generateTables() {
   let j, i;
   let hText = "";
 
-  hText += "<div id='table'>";
+  hText += "<div id='table' style='display: inline-table;'>";
   for (i = 0; i < rows; i++) {
     for (j = 0; j < cols; j++) {
       hText +=
@@ -40,7 +42,8 @@ function generateTables() {
     hText += "<br />";
   }
   hText += "</div>";
-  hText += "<button class='btn btn-primary' id='submitTable'>Sublimt</button>";
+  hText +=
+    "<br /><button class='btn btn-primary mt-3' id='submitTable'>Sublimt</button>";
 
   $("#content").append(hText);
 }
@@ -107,8 +110,63 @@ function errClear() {
 
 function getKey() {
   let serchElm =
-    "<div> <input type='text' id='keyElment' class='key_elm' /> <br /> <button id='chkBtn'>Check</button> </div>";
+    "<div> <input type='text' id='keyElment' class='form-control mt-3' /> <br /> <button id='chkBtn' class='btn btn-primary mt-3'>Check</button> </div>";
   $("#content").append(serchElm);
+}
+
+function setResultPosition(posArr) {
+  let temp = 0;
+  var x = 0;
+  let j, i;
+  let hText = "";
+
+  $("#table").remove();
+  hText += "<div id='table' style='display: inline-table;'>";
+  console.log(posArr);
+  for (i = 0; i < rows; i++) {
+    for (j = 0; j < cols; j++) {
+      console.log(posArr[0][0]);
+      if (checkForMatch(posArr, i, j)) {
+        hText +=
+          "<input type='text' style='background-color: #00ff00;' value='" +
+          matrix[i][j] +
+          "' class='tableField' maxlength='1' id='" +
+          (temp + j) +
+          "'></text>";
+
+        x++;
+      } else {
+        hText +=
+          "<input type='text' value='" +
+          matrix[i][j] +
+          "' class='tableField' maxlength='1' id='" +
+          (temp + j) +
+          "'></text>";
+      }
+    }
+    temp += j;
+    hText += "<br />";
+  }
+
+  $("#content").append(hText);
+}
+
+function checkForMatch(arr, i, j) {
+  let flag = false;
+
+  for (let d = 0; d <= arr.length - 1; d++) {
+    for (let a = 0; a <= arr[d].length - 1; a++) {
+      for (let b = 0; b <= arr[d][a].length - 1; b++) {
+        if (i === arr[d][a][b]) {
+          if (j === arr[d][a][b + 1]) {
+            flag = true;
+          }
+        }
+      }
+    }
+  }
+
+  return flag;
 }
 
 $(document).on("click", "#chkBtn", function() {

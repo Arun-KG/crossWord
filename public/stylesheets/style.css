@@ -10,6 +10,22 @@ body {
   padding-left: 0;
 }
 
+.form-control {
+  text-align: -webkit-center !important;
+}
+
+.float-text-left {
+  float: left;
+}
+
+.hiden {
+  display: none;
+}
+
+.visible {
+  display: initial;
+}
+
 a {
   color: #00b7ff;
 }
