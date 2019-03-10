@@ -5,6 +5,10 @@ let rows,
   matrix = [],
   rowsArry = [];
 
+(function init() {
+  $("#reset-btn").hide();
+})();
+
 $("#firstSBMT").click(function() {
   rows = $("#noOfRows").val();
   cols = $("#noOfCols").val();
@@ -16,8 +20,8 @@ $("#firstSBMT").click(function() {
       alert("Dimensions are too small!");
     } else {
       $("#content").html("");
-      $("#dims").hide();
-      $("#reset-btn").addClass("visible");
+      $("#dims").hide("blind");
+      $("#reset-btn").show("fade");
       generateTables();
     }
   } else {
